@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="shortcut icon" href="icon.svg">
+	<title>DevOpen图片外链工具</title>
+	<!-- 全部主题文件 -->
+	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="style" href="./CSS/style-upload.css">
+	<link rel="style" href="./CSS/style-captcha.css">
+
+	<style>
+		/*上传文件部分*/
+		.file-label {
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+			line-height: 1;
+		}
+
+		.file-input {
+			visibility: hidden;
+			position: absolute;
+		}
+
+		.file-box {
+			width: 100px;
+			height: 100px;
+			border: 2px dashed #999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.upload-icon {
+			font-size: 40px;
+		}
+
+		#overlay {
+			/* 设定遮罩层样式 */
+			display: none;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, .5);
+		}
+
+		#dialog {
+			/* 设定弹出窗口样式 */
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+			border: 1px solid #ccc;
+			padding: 20px;
+			text-align: center;
+
+		}
+	</style>
+
+	<!-- 字体真棒的Script引入 -->
+	<script defer src="https://use.fontawesome.com/releases/v6.4.0/js/all.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v6.4.0/js/v4-shims.js"></script>
+</head>
+
+<body>
+
+	<div>
+		<!-- 标题 -->
+		<h1>
+			<i class="fa-brands fa-magento"></i> DevOpen图片外链工具
+		</h1>
+		<!--<input type="file" id="fileInput" type="file" accept="image/*">-->
+		<!-- 上传文件筐定义 -->
+		<label for="fileInput" class="file-label" aria-label="上传文件">
+			<div class="file-box">
+				<span class="upload-icon">
+					<i class="fa-solid fa-folder-plus" style="color: #5c98ff;"></i>
+				</span>
+			</div>
+		</label>
+
+		<input type="file" id="fileInput" class="file-input" onchange="return checkFile(event)" />
+		<!-- 检查文件类型是否是图片类型 -->
+		<script src="./JS/check-file.js"></script>
+
+		<p></p>
+		<!-- 展示用户选择的文件 -->
+		<div id="selectedFile"></div>
+		<script src="./JS/show-file.js"></script>
+
+		<p></p>
+		<!-- 真人验证浮动窗口标签 -->
+		<div id="overlay">
+			<div id="dialog">
+				<h2>
+					<i class="fa-solid fa-user-shield"></i>
+					等一下，你是真人吗？
+				</h2>
+				<p>图片生成可能较慢，请耐心等待一会...</p>
+				<img src="" alt="验证码" id="captcha-img">
+
+				<p></p>
+
+				<input type="text" id="captcha-input">
+
+				<p></p>
+
+				<button id="confirm-btn">
+					<i class="fa-solid fa-universal-access"></i>
+					我是人类
+				</button>
+			</div>
+		</div>
+
+		<!-- 按钮元素 -->
+		<div style="text-align: center;" id="specific-button">
+			<button onclick="showOverlay()">上传文件</button>
+		</div>
+
+		<!-- 真人验证 -->
+		<script src="./JS/upload-captcha.js"></script>
+
+	</div>
+
+	<p></p>
+	<!-- 复制链接 -->
+	<div>
+		<p id="imageLink"></p>
+		<p id="uuid"></p>
+		<div>
+			<button class="copy" onclick="copyToClipboard()">复制链接</button>
+		</div>
+
+	</div>
+
+	<p></p>
+	<!-- 公告部分 -->
+	<div>
+
+		<h2 style="text-align: center;">
+			<i class="fa-brands fa-hornbill"></i>
+			公告
+		</h2>
+		<p>
+			- 2023年5月6日 服务器初始化，所有提交内容清空！
+		</p>
+
+
+	</div>
+
+	<p style="text-align: center;">
+		<strong>Copyright © 2023 DevOpen All Right Reserves.</strong><br />
+	</p>
+	<p style="text-align: center;">
+		<a href="http://github.com" target="_self" style="color: rgb(0, 176, 240); text-decoration: underline;"><span
+				style="color: rgb(0, 176, 240);">代码仓库</span></a> | <a href="https://fb-bot.starlight.work/"
+			target="_self" style="color: rgb(0, 176, 240); text-decoration: underline;"><span
+				style="color: rgb(0, 176, 240);">Fanbook机器人工具</span></a> | <a href="https://fanbook.mobi/Vm3SRFeJ"
+			target="_self" style="color: rgb(0, 176, 240); text-decoration: underline;"><span
+				style="color: rgb(0, 176, 240);">官方服务器</span></a>
+	</p>
+
+	<p style="text-align: center;">
+		<span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 10px;">开源不代表开放，仅供调试使用。</span><br/>
+	</p>
+	<!-- 上传文件代码 -->
+	<script src="./JS/upload-file.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
+</body>
+
+</html>
