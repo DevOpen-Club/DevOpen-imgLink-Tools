@@ -1,0 +1,25 @@
+/*人机验证部分*/
+#overlay {
+    /* 设定遮罩层样式 */
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#dialog {
+    /* 设定弹出窗口样式 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+
+}

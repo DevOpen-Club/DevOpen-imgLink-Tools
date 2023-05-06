@@ -1,0 +1,70 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* 设置 div 宽度，使其能够水平居中 */
+div {
+    width: 85%;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    width: calc(100% - 70px);
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+}
+
+button {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0066ff;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.copy {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #555555;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.copy:hover {
+    background-color: #f0f0f0;
+}
+
+/* 响应式布局：在较小设备上，上传按钮和复制按钮会垂直堆叠 */
+@media (max-width: 400px) {
+    button {
+        display: block;
+        margin-top: 10px;
+    }
+}
