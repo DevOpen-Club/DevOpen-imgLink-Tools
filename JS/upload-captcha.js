@@ -9,7 +9,7 @@ function showOverlay() {
 
     // 生成6位随机验证码
     var captcha = generateCaptcha(6);
-    alert(captcha)
+    
     function generateCaptcha(length) {
         // 定义一个包含数字和字母的字符集
         var charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
