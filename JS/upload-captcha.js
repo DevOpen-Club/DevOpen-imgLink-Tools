@@ -8,12 +8,19 @@ function showOverlay() {
     overlay.style.display = "block";
 
     // 生成6位随机验证码
-    var captcha = generateCaptcha();
-    function generateCaptcha() {
-        // 生成6位随机整数
-        return Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+    var captcha = generateCaptcha(6);
+    alert(captcha)
+    function generateCaptcha(length) {
+        // 定义一个包含数字和字母的字符集
+        var charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var result = '';
+        for (var i = 0; i < length; i++) {
+            // 从字符集中随机选取一个字符
+            result += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+        return result;
     }
-
+    
     captchaImg.src = "https://dummyimage.com/200x80/000/fff&text=" + captcha;
 
     confirmBtn.onclick = function () {
