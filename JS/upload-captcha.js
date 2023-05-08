@@ -21,7 +21,7 @@ function showOverlay() {
         return result;
     }
     
-    captchaImg.src = "https://dummyimage.com/200x80/EFEFEF/fff&text=" + captcha;
+    captchaImg.src = "https://dummyimage.com/200x80/EFEFEF/fff&text=" +captcha;
 
     confirmBtn.onclick = function () {
         if (captchaInput.value == captcha) {
